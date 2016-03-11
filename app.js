@@ -9,19 +9,19 @@ io.on('connection', function(socket) {
   console.log('new connection');
   socket.on('scanFiles',function(fileList) {
     var files = fileList,
-        precent = 100 / files.length,
-        currPrecent = 0;
+        percent = 100 / files.length,
+        currPercent = 0;
 
   var loop = setInterval(function () {
     var file = files.pop();
     if(!file) {
       clearInterval(loop);
-      socket.emit('status', {text: "complete!", precent: 100});
+      socket.emit('status', {text: "complete!", percent: 100});
       return false;
     }
 
-    socket.emit('status', {text: "scanning " + file + '...', precent: currPrecent});
-    currPrecent += precent;
+    socket.emit('status', {text: "scanning " + file + '...', percent: currPercent});
+    currPercent += percent;
   }, 3000);
   });
 });

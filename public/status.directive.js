@@ -16,8 +16,8 @@ function statusController($scope, socket) {
     vm.textStatus = 'Starting...';
     socket.on('status', function(data) {
         vm.textStatus = data.text;
-        vm.progressValue = vm.countTo = data.precent;
-        if(data.precent == 100)
+        vm.progressValue = vm.countTo = data.percent;
+        if(data.percent == 100)
             vm.scanComplete = true;
         $scope.$apply();
     });
