@@ -10,7 +10,7 @@
   <body ng-controller="ScanController as scanner">
   <div id="main">
     <h1><i class="fa fa-folder-open"></i> FileScanner</h1>
-    <div ng-show="!userClicked" id="files">
+    <div ng-show="!scanStarted" id="files">
     <ul>
       <li ng-repeat="file in scanner.files"><span ng-bind="file"></span></li>
     </ul>
@@ -21,9 +21,9 @@
         <option>.xsl</option>
       </select> <i ng-click="scanner.addFile()" class="fa fa-plus"></i>
       <br/>
-    <button class="btn btn-success" ng-click="scanner.join(); userClicked = !userClicked">Scan!</button>
+    <button class="btn btn-success" ng-click="scanner.scan(); scanStarted = !scanStarted">Scan!</button>
     </div>
-     <status ng-show="userClicked"></status>
+     <status ng-show="scanStarted"></status>
   </div>
   </body>
   <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>

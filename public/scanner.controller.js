@@ -2,8 +2,7 @@ angular.module('scannerApp').controller('ScanController', function($scope, socke
     var vm = this;
 
     vm.files = ['newFile.doc', 'importantFIle.doc', 'superDoc.doc', 'data.xsl'];
-    vm.scanComplete = false;
-    vm.join = function() {
+    vm.scan = function() {
         socket.emit('scanFiles', vm.files);
     };
     vm.addFile = function() {

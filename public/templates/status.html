@@ -1,7 +1,7 @@
 <div>
     <progressbar class="progress-striped active" animate="true" max="100" value="scanner.progressValue" type="success">
         <i>
-            <span count-to="{{scanner.countTo}}" duration="1" count-from="{{scanner.countFrom}}"></span> / 100
+            <span count-to="{{scanner.progressValue}}" duration="1" count-from="{{scanner.countFrom}}"></span> / 100
         </i></progressbar>
     <div id="status">
         <span ng-bind="scanner.textStatus"></span>
