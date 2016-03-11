@@ -1,0 +1,55 @@
+<!doctype>
+<html ng-app="scannerApp">
+  <head>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="lib/font-awesome-4.5.0/css/font-awesome.css">
+    <title>File Scanner - scan your files!</title>
+  </head>
+
+  <body ng-controller="ScanController as scanner">
+  <div id="main">
+    <h1><i class="fa fa-folder-open"></i> FileScanner</h1>
+    <div ng-show="!userClicked" id="files">
+    <ul>
+      <li ng-repeat="file in scanner.files"><span ng-bind="file"></span></li>
+    </ul>
+      <input type="text" placeholder="Add your own file (filename)" ng-model="scanner.newFile">
+      <select selected="selected" class="fileType" ng-model="scanner.fileType">
+        <option>.doc</option>
+        <option>.pptx</option>
+        <option>.xsl</option>
+      </select> <i ng-click="scanner.addFile()" class="fa fa-plus"></i>
+      <br/>
+    <button class="btn btn-success" ng-click="scanner.join(); userClicked = !userClicked">Scan!</button>
+    </div>
+    <div ng-show="userClicked">
+    <progressbar class="progress-striped active" animate="true" max="100" value="scanner.progressValue" type="success">
+      <i>
+      <span count-to="{{scanner.countTo}}" duration="1" count-from="{{scanner.countFrom}}"></span> / 100
+      </i></progressbar>
+    <div id="status">
+      <span ng-bind="scanner.textStatus"></span>
+      <div ng-hide="scanner.scanComplete" class="cs-loader">
+        <div class="cs-loader-inner">
+          <label>●</label>
+          <label>●</label>
+          <label>●</label>
+          <label>●</label>
+          <label>●</label>
+          <label>●</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </body>
+  <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular-route.js"></script>
+  <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+  <script src="lib/angular-count-to.js"></script>
+  <script src="app.js"></script>
+  <script src="socket.service.js"></script>
+  <script src="scanner.controller.js"></script>
+</html>
