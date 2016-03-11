@@ -1,0 +1,19 @@
+<div>
+    <progressbar class="progress-striped active" animate="true" max="100" value="scanner.progressValue" type="success">
+        <i>
+            <span count-to="{{scanner.countTo}}" duration="1" count-from="{{scanner.countFrom}}"></span> / 100
+        </i></progressbar>
+    <div id="status">
+        <span ng-bind="scanner.textStatus"></span>
+        <div ng-hide="scanner.scanComplete" class="cs-loader">
+            <div class="cs-loader-inner">
+                <label>●</label>
+                <label>●</label>
+                <label>●</label>
+                <label>●</label>
+                <label>●</label>
+                <label>●</label>
+            </div>
+        </div>
+    </div>
+</div>
